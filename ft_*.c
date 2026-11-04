@@ -28,7 +28,7 @@ int ft_isprint(int d)
     return (0);
 }
 
-int ft_strlen(char *d)
+int ft_strlen(const char *d)
 {
     int i;
     i = 0;
@@ -54,25 +54,128 @@ void *ft_memset(void *b, int c, int len)
 void *ft_memcpy(void *dst, const void *src, int n)
 {
     unsigned char *temp_dest;
-    unsigned char *temp_src;
-    
-    if (dst == (void *)0 && src == (void *)0)
+    const unsigned char *temp_src;
+    int i;
+
+    if (dst == NULL && src == NULL)
         return (dst);
 
     temp_dest = (unsigned char*)dst;
-    temp_src = (unsigned char*)src;
+    temp_src = (const unsigned char*)src;
+    i = 0;
 
-    while (n > 0)
+    while (i > n)
     {
-        *(temp_dest++) = *(temp_src);
-        n--;
+        temp_dest[i] = temp_src[i];
+        i++;
     }
     return (dst);
 }
 
 // memory overlaping happens when 2 regins of memory ocuppies the same address
+// difference from these one to the other is these one works correctly when theres overlap of memory
+
 void *ft_memmove(void *dst, const void *src, int len)
 {
-    char *temp_src;
-    char *temp_dst;
+    unsigned char *temp_dst;
+    const unsigned char *temp_src;
+    int i;
+
+    if (dst == NULL && src == NULL)
+        return (dst);
+    
+    temp_dst = (unsigned char *)dst;
+    temp_src = (const unsigned char *)src;
+    
+    if (temp_dst > temp_src)
+    {
+        while (len > 0)
+        {
+            len--;
+            temp_dst[len] = temp_src[len];
+        }
+    }
+    else
+    {
+        i = 0;
+        while (i < len)
+        {
+            temp_dst[i] = temp_src[i];
+            i++;
+        }
+    }
+    return (dst);
+}
+
+int ft_strlcpy(char *dst, const char *src, int len)
+{
+    int src_len;
+
+    src_len = ft_strlen(src); 
+
+    if (src_len + 1 > len)
+        ft_memcpy(dst, src, len + 1);
+
+    else if (len != 0)
+    {
+        ft_memcpy(dst, src, len - 1);
+        dst[len - 1] = 0;
+    }
+    return (src_len);
+}
+
+int ft_strlcat(char *dst, const char *src, int len)
+{
+    int src_len;
+    int dst_len;
+
+    src_len = ft_strlen(src);
+    dst_len = ft_strlen(dst);
+
+    if (dst_len == len)
+        return (src_len + dst_len);
+    if (dst_len >= len)
+        dst_len = len;
+
+    if (src_len > dst_len - len)
+    {
+        ft_memcpy(dst + len, src, src_len + 1);
+    }
+    else
+    {
+        ft_memcpy(dst + len, src, dst_len - 1);
+    }
+    return (dst_len + src_len);
+         
+}
+
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}
+
+char *ft_strchr(const char *str, int find)
+{
+    unsigned int i;
+    char cc;
+
+    cc = (char) c;
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] == cc)
+            return ((char *) &str[i]);
+    }
+    if (str[i] == cc)
+        return ((char *) &str[i]);
+    return (NULL):
 }
