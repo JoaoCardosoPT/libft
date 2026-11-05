@@ -179,3 +179,62 @@ char *ft_strchr(const char *str, int find)
         return ((char *) &str[i]);
     return (NULL):
 }
+
+char    *ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	return (NULL);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, int n)
+{
+    int	i;
+
+	i = 0;
+	while (i < n && s1[i] && s2[i])
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
+}
+
+void	*ft_memchr(const void *s, int c, int n)
+{
+	const unsigned char	*ptr;
+    int	i;
+
+	ptr = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)&ptr[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+int ft_memcmp(const void *s1, const void *s2, int n)
+{
+    int i;
+    unsigned char *str1;
+    unsigned char *str2;
+
+    i = 0;
+    str1 = (unsigned char) *s1;
+    str2 = (unsigned char) *s2;
+}
