@@ -1,39 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joacarva <joacarva@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/07 02:48:03 by joacarva          #+#    #+#             */
+/*   Updated: 2026/11/07 02:48:03 by joacarva         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	int i;
-	int count;
-	
+	int	i;
+	int	count;
+
 	i = 0;
 	count = 0;
-	while (s1[i])
+	while (s[i])
 	{
 		while (s[i] && s[i])
 			i++;
 		if (s[i])
 			count++;
 	}
+	return (count);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **array;
-	int words;
-	int i;
-	int j;
+	char	**array;
+	int		i;
+	int		j;
+	int		start;
 
 	if (!s)
 		return (NULL);
-
-	words = count_words(s, c);
-	array = malloc((words + 1) * sizeof(char *));
-	while(s[i])
+	array = malloc((count_words(s, c) + 1) * sizeof(char *));
+	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
 		if (!s[i])
-			return ;
+			return (array);
 		start = i;
 		while (s[i] && s[i] != c)
 			i++;
@@ -41,5 +52,5 @@ char **ft_split(char const *s, char c)
 		j++;
 	}
 	array[j] = NULL;
-	return(array)
+	return (array);
 }
