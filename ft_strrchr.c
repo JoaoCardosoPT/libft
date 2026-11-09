@@ -14,16 +14,29 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	const char	*last;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	last = NULL;
+	while (1)
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i--;
+		if (*s == (char)c)
+			last = s;
+		if (*s == '\0')
+			return ((char *)last);
+		s++;
 	}
-	return (NULL);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*found;
+
+	found = ft_strrchr("Hello", 'l');
+	if (found)
+		printf("%s\n", found);
+	return (0);
+}
+*/

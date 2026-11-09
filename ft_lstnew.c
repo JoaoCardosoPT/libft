@@ -23,3 +23,20 @@ t_list	*ft_lstnew(void *content)
 	elem->next = NULL;
 	return (elem);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	t_list	*node;
+
+	node = ft_lstnew("Hello");
+	if (!node)
+		return (1);
+	printf("%s\n", (char *)node->content);
+	printf("Next is NULL: %d\n", node->next == NULL);
+	free(node);
+	return (0);
+}
+*/

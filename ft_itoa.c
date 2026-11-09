@@ -16,11 +16,7 @@ static int	int_length(int number)
 {
 	int	length;
 
-	length = 0;
-	if (number == 0)
-		return (1);
-	if (number < 0)
-		number = -number;
+	length = (number <= 0);
 	while (number != 0)
 	{
 		number /= 10;
@@ -31,14 +27,40 @@ static int	int_length(int number)
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	char	*result;
-	long	num;
+	int				len;
+	char			*result;
+	unsigned int	num;
 
-	num = n;
 	len = int_length(n);
-	result = (char *)ft_calloc(sizeof(char), (len + 1));
+	result = malloc(len + 1);
 	if (!result)
 		return (NULL);
 	result[len] = '\0';
+	num = n;
+	if (n < 0)
+		num = 0 - num;
+	while (len > 0)
+	{
+		result[--len] = (num % 10) + '0';
+		num /= 10;
+	}
+	if (n < 0)
+		result[0] = '-';
+	return (result);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = ft_itoa(-42);
+	if (!str)
+		return (1);
+	printf("%s\n", str);
+	free(str);
+	return (0);
+}
+*/

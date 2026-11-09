@@ -23,3 +23,16 @@ t_list	*ft_lstlast(t_list *lst)
 		tmp = tmp->next;
 	return (tmp);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	t_list	second = {"second", NULL};
+	t_list	first = {"first", &second};
+
+	printf("%s\n", (char *)ft_lstlast(&first)->content);
+	return (0);
+}
+*/

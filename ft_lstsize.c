@@ -12,12 +12,13 @@
 
 #include "libft.h"
 
-unsigned int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		count;
 	t_list	*tmp;
 
 	count = 0;
+	tmp = lst;
 	while (tmp != NULL)
 	{
 		tmp = tmp->next;
@@ -25,3 +26,16 @@ unsigned int	ft_lstsize(t_list *lst)
 	}
 	return (count);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	t_list	second = {"second", NULL};
+	t_list	first = {"first", &second};
+
+	printf("%d\n", ft_lstsize(&first));
+	return (0);
+}
+*/

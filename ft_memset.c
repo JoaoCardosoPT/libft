@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, int len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*temp;
 
@@ -24,3 +24,16 @@ void	*ft_memset(void *b, int c, int len)
 	}
 	return (b);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	str[] = "Hello";
+
+	ft_memset(str, 'x', 3);
+	printf("%s\n", str);
+	return (0);
+}
+*/

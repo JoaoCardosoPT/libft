@@ -14,6 +14,18 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	write(fd, s, 1);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	ft_putendl_fd("Hello", 1);
+	return (0);
+}
+*/

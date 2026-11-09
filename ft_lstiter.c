@@ -16,6 +16,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*tmp;
 
+	if (!f)
+		return ;
 	tmp = lst;
 	while (tmp)
 	{
@@ -23,3 +25,21 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		tmp = tmp->next;
 	}
 }
+
+/*
+#include <stdio.h>
+
+static void	test_print(void *content)
+{
+	printf("%s\n", (char *)content);
+}
+
+int	main(void)
+{
+	t_list	second = {"second", NULL};
+	t_list	first = {"first", &second};
+
+	ft_lstiter(&first, test_print);
+	return (0);
+}
+*/

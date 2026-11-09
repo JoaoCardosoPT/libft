@@ -16,6 +16,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
 	while (s[i])
 	{
@@ -23,3 +25,22 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
+
+/*
+#include <stdio.h>
+
+static void	test_upper(unsigned int i, char *c)
+{
+	(void)i;
+	*c = ft_toupper(*c);
+}
+
+int	main(void)
+{
+	char	str[] = "hello";
+
+	ft_striteri(str, test_upper);
+	printf("%s\n", str);
+	return (0);
+}
+*/

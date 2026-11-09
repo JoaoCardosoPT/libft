@@ -14,26 +14,36 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
+	size_t	len1;
+	size_t	len2;
 	char	*res;
 
-	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len1 >= (size_t)-1 - len2)
+		return (NULL);
+	res = malloc(len1 + len2 + 1);
 	if (!res)
 		return (NULL);
-	while (s1[i])
-	{
-		res[j] = s1[i];
-		j++;
-		i++;
-	}
-	i = 0;
-	while (s2[i])
-	{
-		res[j] = s2[i];
-		j++;
-		i++;
-	}
-	res[j] = 0;
+	ft_memcpy(res, s1, len1);
+	ft_memcpy(res + len1, s2, len2 + 1);
 	return (res);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = ft_strjoin("Hello ", "world");
+	if (!str)
+		return (1);
+	printf("%s\n", str);
+	free(str);
+	return (0);
+}
+*/

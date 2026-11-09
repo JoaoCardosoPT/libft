@@ -16,8 +16,28 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
+	if (!lst || !new)
+		return ;
 	last = ft_lstlast(*lst);
 	if (!last)
 		*lst = new;
-	last->next = new;
+	else
+		last->next = new;
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	t_list	first = {"first", NULL};
+	t_list	second = {"second", NULL};
+	t_list	*list;
+
+	list = &first;
+	ft_lstadd_back(&list, &second);
+	printf("%s %s\n", (char *)list->content,
+		(char *)list->next->content);
+	return (0);
+}
+*/

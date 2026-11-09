@@ -18,3 +18,13 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	printf("%c %c\n", ft_tolower('A'), ft_tolower('7'));
+	return (0);
+}
+*/

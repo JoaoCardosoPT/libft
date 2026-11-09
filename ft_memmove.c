@@ -18,9 +18,9 @@
 */
 
 static void	copy_forward(unsigned char *dst, const unsigned char *src,
-		int len)
+			size_t len)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < len)
@@ -30,7 +30,7 @@ static void	copy_forward(unsigned char *dst, const unsigned char *src,
 	}
 }
 
-void	*ft_memmove(void *dst, const void *src, int len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char		*temp_dst;
 	const unsigned char	*temp_src;
@@ -51,3 +51,16 @@ void	*ft_memmove(void *dst, const void *src, int len)
 		copy_forward(temp_dst, temp_src, len);
 	return (dst);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	str[10] = "Hello";
+
+	ft_memmove(str + 2, str, 6);
+	printf("%s\n", str);
+	return (0);
+}
+*/

@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, int n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*ptr;
-	int					i;
+	size_t				i;
 
 	ptr = (const unsigned char *)s;
 	i = 0;
@@ -27,3 +27,17 @@ void	*ft_memchr(const void *s, int c, int n)
 	}
 	return (NULL);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*found;
+
+	found = ft_memchr("Hello", 'l', 5);
+	if (found)
+		printf("%s\n", found);
+	return (0);
+}
+*/

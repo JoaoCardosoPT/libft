@@ -38,3 +38,14 @@ void	ft_putnbr_fd(int n, int fd)
 		}
 	}
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	ft_putnbr_fd(-42, 1);
+	write(1, "\n", 1);
+	return (0);
+}
+*/

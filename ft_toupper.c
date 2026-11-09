@@ -18,3 +18,13 @@ int	ft_toupper(int c)
 		return (c - 32);
 	return (c);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	printf("%c %c\n", ft_toupper('a'), ft_toupper('7'));
+	return (0);
+}
+*/

@@ -14,6 +14,25 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	if (!lst || !new)
+		return ;
 	new->next = *lst;
 	*lst = new;
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	t_list	first = {"first", NULL};
+	t_list	second = {"second", NULL};
+	t_list	*list;
+
+	list = &second;
+	ft_lstadd_front(&list, &first);
+	printf("%s %s\n", (char *)list->content,
+		(char *)list->next->content);
+	return (0);
+}
+*/

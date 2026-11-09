@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && s1[i] && s2[i])
@@ -27,3 +27,14 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 	return (0);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	printf("Equal: %d\n", ft_strncmp("abc", "abc", 3) == 0);
+	printf("Less: %d\n", ft_strncmp("abc", "abd", 3) < 0);
+	return (0);
+}
+*/

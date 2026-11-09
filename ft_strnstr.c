@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, int len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (needle[0] == '\0')
 		return ((char *)haystack);
-	while (haystack[i] && i < len)
+	while (i < len && haystack[i])
 	{
 		j = 0;
-		while (needle[j] != '\0' && haystack[i + j] == needle[j]
-			&& (i + j) < len)
+		while (needle[j] != '\0' && j < len - i
+			&& haystack[i + j] == needle[j])
 			j++;
 		if (needle[j] == '\0')
 			return ((char *)haystack + i);
@@ -32,3 +32,17 @@ char	*ft_strnstr(const char *haystack, const char *needle, int len)
 	}
 	return (NULL);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*found;
+
+	found = ft_strnstr("Hello world", "world", 11);
+	if (found)
+		printf("%s\n", found);
+	return (0);
+}
+*/

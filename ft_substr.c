@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-char	*ft_substr(char *a, unsigned int start, int len)
+char	*ft_substr(char const *a, unsigned int start, size_t len)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
 	i = 0;
 	if (!a)
 		return (NULL);
-	if (start > ft_strlen(a))
+	if (start >= ft_strlen(a))
 		return (ft_strdup(""));
 	if (len > ft_strlen(a + start))
 		len = ft_strlen(a + start);
@@ -34,3 +34,19 @@ char	*ft_substr(char *a, unsigned int start, int len)
 	}
 	return (str);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = ft_substr("Hello world", 6, 5);
+	if (!str)
+		return (1);
+	printf("%s\n", str);
+	free(str);
+	return (0);
+}
+*/
